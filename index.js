@@ -2,7 +2,7 @@
 const express = require('express');
 const cors = require('cors');
 require('dotenv').config()
-const { MongoClient, ServerApiVersion } = require('mongodb');
+const { MongoClient, ServerApiVersion, ObjectId } = require('mongodb');
 const app = express();
 const port = process.env.PORT || 6969 ;
 
@@ -50,8 +50,43 @@ async function run() {
         res.send(result)
     }) 
 
+    // delete data form the database
+    app.delete('/coffe/:id' , async(req, res)=>{
+      const id = req.params.id 
+      const query = { _id : new ObjectId(id)}
+      const result = await coffeCollection.deleteOne(query)
+      res.send(result)
+    })
 
 
+    // update the data  1 
+    app.get('/coffe/:id', async(req, res)=>{
+      const id = req.params.id 
+      const query = {_id : new ObjectId(id)}
+      const result = await coffeCollection.findOne(query)
+      res.send(result)
+    })
+
+   /*  app.put('/coffe/:id', async(req , res)=>{
+      const id = req.params.id 
+      const filter = {_id : new ObjectId(id)}
+      const options = { upsert : true} ;
+      const updatedCoffe = req.body ;
+      const coffeData = {
+        $set : {
+              name : updatedCoffe.name,
+            quantiy: updatedCoffe.quantiy,
+             taste: updatedCoffe.taste,
+         suplier: updatedCoffe.suplier,
+           details: updatedCoffe.details,
+            category: updatedCoffe.category,
+             photo: updatedCoffe.photo
+
+        }
+      }
+      const result = await coffeCollection.updateOne(filter,options,coffeData)
+      res.send(result)
+    }) */
 
 
 

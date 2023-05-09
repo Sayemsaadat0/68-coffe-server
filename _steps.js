@@ -52,5 +52,66 @@ CLIENT SITE
 1.fetch(url) or loader to the route path 
 2.make component , map distracture to shaw the data to the ui 
 
+*/
 
+
+
+/* 
+# DELETE 
+
+#server site
+for the delete action we must need an id 
+so here in this process we will use  '/path/:id'  , BCZ WE WANT TO DELETE ONLY ONE ITEM 
+
+1.const query = { _id : new objectId(id)}
+2.deleteOne(query)
+
+
+#Client site > 
+1.eventhandler with id parameter 
+2.fetch(`${_id}`, {method : 'DELETE'}) 
+
+
+*/
+
+
+
+
+
+
+
+
+
+/* 
+# UPDATE
+# SERVER 1 to get the data form the client side
+to update amy data we use app.get() and findOne(). there will be also the path with an id path 
+1. 'path/:id' 
+2.findONe() 
+
+
+# client to send the data to the server 
+
+1.use loader for this time as we need the id so we will get it usings params parameter 
+2.update path router 'path/:id'
+3.event handler . form onsubmit
+3.for updating value we use 'PUT' 
+
+
+
+# SERVER 2  update the data which  we have in out database  by reciving from the client side 
+
+1. app.put('path/:id')
+2.filter = new objectId(id)
+3. const options = {upsert : true}
+3. updatedData = req.body 
+data = {
+    $set : {
+        dataName : updatedData.dataName,
+        dataName : updatedData.dataName,
+        dataName : updatedData.dataName,
+        dataName : updatedData.dataName
+    }
+}
+4.updateOnd(filter , options , data )
 */
