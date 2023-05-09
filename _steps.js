@@ -48,16 +48,6 @@ SERVER SITE
 1.app.get() async await must be
 
 
-
-
-
-
-
-
-
-
-
-
 CLIENT SITE 
 1.fetch(url) or loader to the route path 
 2.make component , map distracture to shaw the data to the ui 
